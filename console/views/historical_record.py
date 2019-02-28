@@ -40,6 +40,7 @@ class HistoryRecordView(APIView):
             if not user_id:
                 return Response(general_message(400, "params error", "参数异常"), status=400)
             history_objs = History.objects.filter(user_id=user_id).all()
+            # 清空
             if history_objs:
                 for history_obj in history_objs:
                     history_obj.delete()
